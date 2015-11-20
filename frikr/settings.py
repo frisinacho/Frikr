@@ -87,7 +87,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'es-es'
 
-TIME_ZONE = 'UTC+2'
+TIME_ZONE = 'Europe/Madrid'
 
 USE_I18N = True
 

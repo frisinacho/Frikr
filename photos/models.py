@@ -10,6 +10,7 @@ LICENSES = (
     (CREATIVE_COMMONS, 'Creative Commons')
 )
 
+
 # Create your models here.
 class Photo(models.Model):
     name = models.CharField(max_length=150)

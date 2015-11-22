@@ -19,3 +19,6 @@ class Photo(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
     license = models.CharField(max_length=3, choices=LICENSES)
+
+    def __unicode__(self):
+        return self.name

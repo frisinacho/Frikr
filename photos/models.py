@@ -11,6 +11,14 @@ LICENSES = (
     (CREATIVE_COMMONS, 'Creative Commons')
 )
 
+PUBLIC = 'PUB'
+PRIVATE = 'PRI'
+
+VISIBILITY = (
+    (PUBLIC, 'Pública'),
+    (PRIVATE, 'Privada')
+)
+
 
 # Create your models here.
 class Photo(models.Model):
@@ -21,6 +29,7 @@ class Photo(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
     license = models.CharField(max_length=3, choices=LICENSES)
+    visibility = models.CharField(max_length=3, choices=VISIBILITY)
 
     def __unicode__(self):
         return self.name

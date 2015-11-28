@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+# LICENSES:
 COPYRIGHT = 'RIG'
 COPYLEFT = 'LEF'
 CREATIVE_COMMONS = 'CC'
@@ -11,6 +12,7 @@ LICENSES = (
     (CREATIVE_COMMONS, 'Creative Commons')
 )
 
+# VISIBILITY:
 PUBLIC = 'PUB'
 PRIVATE = 'PRI'
 

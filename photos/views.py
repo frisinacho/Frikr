@@ -6,7 +6,7 @@ from photos.models import Photo
 
 
 def home(request):
-    photos = Photo.objects.all().order_by('-created_at')
+    photos = Photo.objects.filter(visibility='PUB').order_by('-created_at')
     context = {
         'photos_list': photos[:5]
     }

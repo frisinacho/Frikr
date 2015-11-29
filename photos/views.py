@@ -34,7 +34,7 @@ def detail(request, pk):
     except Photo.MultipleObjects:
         photo = None
     """
-    possible_photos = Photo.object.filter(pk=pk)
+    possible_photos = Photo.objects.filter(pk=pk)
     # JS: photo = (possible_photo.length == 1) ? possible_photo[0] : null;
     photo = possible_photos[0] if len(possible_photos) == 1 else None
     if photo is not None:

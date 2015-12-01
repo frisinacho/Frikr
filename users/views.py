@@ -6,8 +6,8 @@ from django.contrib.auth import logout as django_logout
 
 def login(request):
     if request.method == 'POST':
-        username = request.POST['usr']
-        password = request.POST['pwd']
+        username = request.POST.get('usr')
+        password = request.POST.get('pwd')
     return render(request, 'users/login.html')
 
 

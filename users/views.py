@@ -3,8 +3,9 @@ from django.contrib.auth import logout as django_logout
 
 # Create your views here.
 
+
 def login(request):
-    pass
+    return render(request, 'users/login.html')
 
 
 def logout(request):

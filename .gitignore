@@ -1,1 +1,8 @@
+# Idea stuff
 .idea/
+
+# Better recommendation for .gitignore
+*.pyc
+*.pyo
+build/
+dist/

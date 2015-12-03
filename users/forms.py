@@ -1,2 +1,6 @@
 # -*- coding: utf-8 -*-
-__author__ = 'nacho'
+from django import forms
+
+
+class LoginForm(forms.Form):
+    pass

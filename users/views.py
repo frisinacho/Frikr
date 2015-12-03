@@ -7,9 +7,9 @@ from users.forms import LoginForm
 
 
 def login(request):
-    form = LoginForm()
     error_messages = []
     if request.method == 'POST':
+        form = LoginForm(request.POST)
         username = request.POST.get('usr')
         password = request.POST.get('pwd')
         user = authenticate(username=username, password=password)
@@ -21,6 +21,8 @@ def login(request):
                 return redirect('photos_home')
             else:
                 error_messages.append('El usuario no está activo')
+    else:
+        form = LoginForm()
     context = {
         'errors': error_messages,
         'login_form': form,

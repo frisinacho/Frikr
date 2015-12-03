@@ -3,4 +3,6 @@ from django import forms
 
 
 class LoginForm(forms.Form):
-    pass
+
+    usr = forms.CharField()
+    pwd = forms.CharField()

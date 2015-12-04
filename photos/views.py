@@ -64,7 +64,7 @@ def create(request):
             new_photo = form.save()  # Guarda el objeto photo y me lo devuelve
             form = PhotoForm()
             success_message = 'Guardado con éxito!'
-            success_message += '<a href="{0}"'.format(reverse('photo_detail', args=[new_photo.pk]))
+            success_message += '<a href="{0}">'.format(reverse('photo_detail', args=[new_photo.pk]))
             success_message += 'Ver foto'
             success_message += '</a>'
     context = {

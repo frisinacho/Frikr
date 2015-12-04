@@ -6,6 +6,7 @@ from django.shortcuts import render
 # Create your views here.
 from photos.forms import PhotoForm
 from photos.models import Photo, PUBLIC
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -49,6 +50,7 @@ def detail(request, pk):
         return HttpResponseNotFound('No existe la foto')   # 404 not found
 
 
+@login_required()
 def create(request):
     """
     Muestra un formulario para crear una foto y la crea si la petición es POST

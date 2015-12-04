@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 
@@ -54,13 +55,20 @@ def create(request):
     :param request: HttpRequest
     :return: HttpResponse
     """
+    success_message = ''
     if request.method == 'GET':
         form = PhotoForm()
     else:
         form = PhotoForm(request.POST)
         if form.is_valid():
             new_photo = form.save()  # Guarda el objeto photo y me lo devuelve
+            form = PhotoForm()
+            success_message = 'Guardado con éxito!'
+            success_message += '<a href="' + reverse('photo_detail', args=[new_photo.pk]) + '"'
+            success_message += 'Ver foto'
+            success_message += '</a>'
     context = {
-        'form': form
+        'form': form,
+        'succes_message': success_message
     }
     return render(request, 'photos/new_photo.html', context)

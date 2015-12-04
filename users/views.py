@@ -11,8 +11,8 @@ def login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            username = request.POST.get('usr')
-            password = request.POST.get('pwd')
+            username =form.cleaned_data.get('usr')
+            password =form.cleaned_data.get('pwd')
             user = authenticate(username=username, password=password)
             if user in None:
                 error_messages.append('Nombre de usuario o contraseña incorrectos')

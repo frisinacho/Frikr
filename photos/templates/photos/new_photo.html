@@ -6,7 +6,7 @@
 
     <h1>Crear una foto</h1>
 
-    {% if success_message %} <span style="color: green">{{ success_message }}</span> {% endif %}
+    {% if success_message %} <span style="color: green">{{ success_message|safe }}</span> {% endif %}
 
     <form method="post">
         {% csrf_token %}

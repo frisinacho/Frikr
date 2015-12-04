@@ -4,5 +4,14 @@
 
 {% block section %}
 
+    <h1>Crear una foto</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+            <button>Crear foto</button>
+        </div>
+    </form>
 
 {% endblock %}

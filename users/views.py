@@ -14,7 +14,7 @@ def login(request):
             username =form.cleaned_data.get('usr')
             password =form.cleaned_data.get('pwd')
             user = authenticate(username=username, password=password)
-            if user in None:
+            if user is None:
                 error_messages.append('Nombre de usuario o contraseña incorrectos')
             else:
                 if user.is_active:

@@ -54,7 +54,12 @@ def create(request):
     :param request: HttpRequest
     :return: HttpResponse
     """
-    form = PhotoForm()
+    if request.method == 'GET':
+        form = PhotoForm()
+    else:
+        form = PhotoForm(request.POST)
+        if form.is_valid():
+            new_photo = form.save()  # Guarda el objeto photo y me lo devuelve
     context = {
         'form': form
     }

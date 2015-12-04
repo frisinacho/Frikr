@@ -45,3 +45,12 @@ def detail(request, pk):
         return render(request, 'photos/detail.html', context)
     else:
         return HttpResponseNotFound('No existe la foto')   # 404 not found
+
+
+def create(request):
+    """
+    Muestra un formulario para crear una foto y la crea si la petición es POST
+    :param request: HttpRequest
+    :return: HttpResponse
+    """
+    pass

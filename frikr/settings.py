@@ -133,4 +133,4 @@ LICENSES = (
 )
 
 # BADWORDS http://goo.gl/G2nCu7
-PROJECT_BADWORDS = ['Abollao', 'Abrazafarolas', 'Afilasables', 'Analfabestia', 'Apollardao', 'Afinabanjos']
+PROJECT_BADWORDS = ['Abollao', 'Abrazafarolas', 'Afilasables', 'Analfabestia', 'Apollardao', 'Afinabanjos', 'Caracartón']

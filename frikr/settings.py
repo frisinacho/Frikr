@@ -131,3 +131,6 @@ LICENSES = (
     ('QUE', 'Quentin Tarantino'),
     ('DSH', 'Dr. Schultz'),
 )
+
+# BADWORDS http://goo.gl/G2nCu7
+BADWORDS = ['Abollao', 'Abrazafarolas', 'Afilasables', 'Analfabestia', 'Apollardao', 'Afinabanjos']

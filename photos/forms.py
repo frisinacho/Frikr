@@ -10,3 +10,9 @@ class PhotoForm(forms.ModelForm):
     class Meta:
         model = Photo
         exclude = ['owner']
+
+    def clean(self):
+        """
+        Valida si en la descripción se han puesto tacos definidos en settings.BADWORDS
+        :return: diccionario con los atributos si OK
+        """

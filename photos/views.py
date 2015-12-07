@@ -72,26 +72,23 @@ class CreateView(View):
         return render(request, 'photos/new_photo.html', context)
 
     @login_required()
-    def create(request):
+    def post(self, request):
         """
-        Muestra un formulario para crear una foto y la crea si la petición es POST
+        Crea una foto en base a la información POST
         :param request: HttpRequest
         :return: HttpResponse
         """
         success_message = ''
-        if request.method == 'GET':
+        photo_with_owner = Photo()
+        photo_with_owner.owner = request.user  # Asigno como propietario al usuario autenticado
+        form = PhotoForm(request.POST, instance=photo_with_owner)
+        if form.is_valid():
+            new_photo = form.save()  # Guarda el objeto photo y me lo devuelve
             form = PhotoForm()
-        else:
-            photo_with_owner = Photo()
-            photo_with_owner.owner = request.user  # Asigno como propietario al usuario autenticado
-            form = PhotoForm(request.POST, instance=photo_with_owner)
-            if form.is_valid():
-                new_photo = form.save()  # Guarda el objeto photo y me lo devuelve
-                form = PhotoForm()
-                success_message = 'Guardado con éxito!'
-                success_message += '<a href="{0}">'.format(reverse('photo_detail', args=[new_photo.pk]))
-                success_message += 'Ver foto'
-                success_message += '</a>'
+            success_message = 'Guardado con éxito!'
+            success_message += '<a href="{0}">'.format(reverse('photo_detail', args=[new_photo.pk]))
+            success_message += 'Ver foto'
+            success_message += '</a>'
         context = {
             'form': form,
             'success_message': success_message

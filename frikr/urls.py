@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 from photos.views import HomeView
-from users.views import LoginView
+from users.views import LoginView, LogoutView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -29,5 +29,5 @@ urlpatterns = [
 
     # User URLs
     url(r'^login$', LoginView.as_view(), name='users_login'),
-    url(r'^logout$', 'users.views.logout', name='users_logout'),
+    url(r'^logout$', LogoutView.as_view(), name='users_logout'),
 ]

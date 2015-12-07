@@ -7,18 +7,21 @@ from django.shortcuts import render
 from photos.forms import PhotoForm
 from photos.models import Photo, PUBLIC
 from django.contrib.auth.decorators import login_required
+from django.views.generic import View
 
 
-def home(request):
-    """
-    Esta función devuelve el home de mi página
-    """
-    photos = Photo.objects.filter(visibility=PUBLIC).order_by('-created_at')
-    context = {
-        'photos_list': photos[:5]
-    }
+class HomeView(View):
 
-    return render(request, 'photos/home.html', context)
+    def get(self, request):
+        """
+        Esta función devuelve el home de mi página
+        """
+        photos = Photo.objects.filter(visibility=PUBLIC).order_by('-created_at')
+        context = {
+            'photos_list': photos[:5]
+        }
+
+        return render(request, 'photos/home.html', context)
 
 
 def detail(request, pk):

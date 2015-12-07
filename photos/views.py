@@ -8,6 +8,7 @@ from photos.forms import PhotoForm
 from photos.models import Photo, PUBLIC
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View
+from django.utils.decorators import method_decorator
 
 
 class HomeView(View):
@@ -57,7 +58,7 @@ class DetailView(View):
 
 class CreateView(View):
 
-    @login_required()
+    @method_decorator(login_required())
     def get(self, request):
         """
         Muestra un formulario para crear una foto
@@ -71,7 +72,7 @@ class CreateView(View):
         }
         return render(request, 'photos/new_photo.html', context)
 
-    @login_required()
+    @method_decorator(login_required())
     def post(self, request):
         """
         Crea una foto en base a la información POST

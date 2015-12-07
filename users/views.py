@@ -42,6 +42,7 @@ class LoginView(View):
 
 
 class LogoutView(View):
+
     def get(self, request):
         if request.user.is_authenticated():
             django_logout(request)

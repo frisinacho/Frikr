@@ -95,3 +95,22 @@ class CreateView(View):
             'success_message': success_message
         }
         return render(request, 'photos/new_photo.html', context)
+
+
+class ListView(View):
+
+    def get(self, request):
+        """
+        Devuelve:
+        - Las fotos públicas si el usuario no está autenticado
+        - Las fotos del usuario autenticado o las públicas de otros
+        - Si el usuario es superadministrador, todas las fotos
+        :param request: HttpRequest
+        :return: HttpResponse
+        """
+        if not request.user.is_authenticated():  # Si no está autenticado
+            photos = Photo.objects.filter(visibility=PUBLIC)
+        elif request.user.is_superuser:  # Si es administrador
+            photos = Photo.objects.all()
+        else:
+            pass

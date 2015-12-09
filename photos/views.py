@@ -9,6 +9,7 @@ from photos.models import Photo, PUBLIC
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View
 from django.utils.decorators import method_decorator
+from django.db.models import Q
 
 
 class HomeView(View):
@@ -113,4 +114,4 @@ class ListView(View):
         elif request.user.is_superuser:  # Si es administrador
             photos = Photo.objects.all()
         else:
-            pass
+            photos = Photo.objects.filter(Q(owner=request.user) | Q(visibility=PUBLIC))

@@ -14,7 +14,8 @@ from django.db.models import Q
 
 class PhotosQuerySet(object):
 
-    def get_photos_queryset(self, request):
+    @staticmethod
+    def get_photos_queryset(request):
         if not request.user.is_authenticated():  # Si no está autenticado
             photos = Photo.objects.filter(visibility=PUBLIC)
         elif request.user.is_superuser:  # Si es administrador

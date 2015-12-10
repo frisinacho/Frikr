@@ -115,3 +115,7 @@ class ListView(View):
             photos = Photo.objects.all()
         else:
             photos = Photo.objects.filter(Q(owner=request.user) | Q(visibility=PUBLIC))
+        context = {
+            'photos': photos
+        }
+        return render(request, 'photos/photos_list.html', context)

@@ -38,7 +38,7 @@ class HomeView(View):
         return render(request, 'photos/home.html', context)
 
 
-class DetailView(View):
+class DetailView(View, PhotosQuerySet):
 
     def get(self, request, pk):
         """
@@ -56,7 +56,7 @@ class DetailView(View):
         except Photo.MultipleObjects:
             photo = None
         """
-        possible_photos = Photo.objects.filter(pk=pk).select_related('owner')
+        possible_photos = self.get_photos_queryset(request).filter(pk=pk).select_related('owner')
         # JS: photo = (possible_photo.length == 1) ? possible_photo[0] : null;
         photo = possible_photos[0] if len(possible_photos) == 1 else None
         if photo is not None:

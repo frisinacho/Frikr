@@ -12,6 +12,18 @@ from django.utils.decorators import method_decorator
 from django.db.models import Q
 
 
+class PhotosQuerySet(object):
+
+    def get_photos_queryset(self, request):
+        if not request.user.is_authenticated():  # Si no está autenticado
+            photos = Photo.objects.filter(visibility=PUBLIC)
+        elif request.user.is_superuser:  # Si es administrador
+            photos = Photo.objects.all()
+        else:
+            photos = Photo.objects.filter(Q(owner=request.user) | Q(visibility=PUBLIC))
+        return photos
+
+
 class HomeView(View):
 
     def get(self, request):

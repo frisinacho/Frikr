@@ -14,8 +14,7 @@ from django.db.models import Q
 
 class PhotosQuerySet(object):
 
-    @staticmethod
-    def get_photos_queryset(request):
+    def get_photos_queryset(self, request):
         if not request.user.is_authenticated():  # Si no está autenticado
             photos = Photo.objects.filter(visibility=PUBLIC)
         elif request.user.is_superuser:  # Si es administrador
@@ -123,6 +122,6 @@ class ListView(View, PhotosQuerySet):
         :return: HttpResponse
         """
         context = {
-            'photos': PhotosQuerySet.get_photos_queryset(request)
+            'photos': self.get_photos_queryset(request)
         }
         return render(request, 'photos/photos_list.html', context)

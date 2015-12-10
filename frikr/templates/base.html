@@ -8,6 +8,8 @@
     <nav>
         <a href="{% url 'photos_home' %}">Home</a>
         |
+        <a href="{% url 'photos_list' %}">Listado de fotos</a>
+        |
         {% if user.is_authenticated %}
             <a href="{% url 'create_photo' %}">Crear foto</a>
             |

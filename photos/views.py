@@ -7,7 +7,7 @@ from django.shortcuts import render
 from photos.forms import PhotoForm
 from photos.models import Photo, PUBLIC
 from django.contrib.auth.decorators import login_required
-from django.views.generic import View
+from django.views.generic import View, ListView
 from django.utils.decorators import method_decorator
 from django.db.models import Q
 
@@ -125,3 +125,9 @@ class PhotoListView(View, PhotosQuerySet):
             'photos': self.get_photos_queryset(request)
         }
         return render(request, 'photos/photos_list.html', context)
+
+
+class UserPhotosView(ListView):
+
+    model = Photo
+    template_name = 'photos/user_photos.html'

@@ -131,3 +131,7 @@ class UserPhotosView(ListView):
 
     model = Photo
     template_name = 'photos/user_photos.html'
+
+    def get_queryset(self):
+        queryset = super(UserPhotosView, self).get_queryset()
+        return queryset.filter(owner=self.request.user)

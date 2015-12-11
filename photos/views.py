@@ -110,7 +110,7 @@ class CreateView(View):
         return render(request, 'photos/new_photo.html', context)
 
 
-class ListView(View, PhotosQuerySet):
+class PhotoListView(View, PhotosQuerySet):
 
     def get(self, request):
         """

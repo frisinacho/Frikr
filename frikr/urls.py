@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from photos.views import HomeView, DetailView, CreateView, ListView, UserPhotosView
+from photos.views import HomeView, DetailView, CreateView, PhotoListView, UserPhotosView
 from users.views import LoginView, LogoutView
 
 urlpatterns = [
@@ -24,7 +24,7 @@ urlpatterns = [
     # Photo URLs
     url(r'^$', HomeView.as_view(), name='photos_home'),
     url(r'^my-photos/$', UserPhotosView.as_view(), name='user_photos'),
-    url(r'^photos/$', ListView.as_view(), name='photos_list'),
+    url(r'^photos/$', PhotoListView.as_view(), name='photos_list'),
     url(r'^photos/(?P<pk>[0-9]+)$', DetailView.as_view(), name='photo_detail'),
     url(r'photos/new$', CreateView.as_view(), name='create_photo'),
 

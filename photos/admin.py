@@ -17,9 +17,9 @@ class PhotoAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('name'),
-            'clases': ('wide'),
-        })
+            'fields': ('name',),
+            'clases': ('wide',),
+        }),
     )
 
 admin.site.register(Photo, PhotoAdmin)

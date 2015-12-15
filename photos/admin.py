@@ -18,7 +18,7 @@ class PhotoAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': ('name',),
-            'clases': ('wide',),
+            'classes': ('wide',),
         }),
         ('Description & Author', {
             'fields': ('description', 'owner'),

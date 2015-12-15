@@ -23,6 +23,10 @@ class PhotoAdmin(admin.ModelAdmin):
         ('Description & Author', {
             'fields': ('description', 'owner'),
         }),
+        ('Extra', {
+            'fields': ('url', 'license', 'visibility'),
+            'classes': ('wide', 'collapse'),
+        }),
     )
 
 admin.site.register(Photo, PhotoAdmin)

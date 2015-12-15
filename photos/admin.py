@@ -15,5 +15,11 @@ class PhotoAdmin(admin.ModelAdmin):
     owner_name.short_description = u'Photo owner'
     owner_name.admin_order_field = 'owner'
 
+    fieldsets = (
+        (None, {
+            'fields': ('name'),
+            'clases': ('wide'),
+        })
+    )
 
 admin.site.register(Photo, PhotoAdmin)

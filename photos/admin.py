@@ -22,6 +22,7 @@ class PhotoAdmin(admin.ModelAdmin):
         }),
         ('Description & Author', {
             'fields': ('description', 'owner'),
+            'classes': ('wide',),
         }),
         ('Extra', {
             'fields': ('url', 'license', 'visibility'),

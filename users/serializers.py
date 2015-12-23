@@ -26,3 +26,12 @@ class UserSerializer(serializers.Serializer):
         instance.set_password(validated_data.get('password'))
         instance.save()
         return instance
+
+    def update(self, instance, validated_data):
+        """
+        Actualiza una instancia de User a partir de los datos
+        del diccionario validated_data que contiene valores deserializados
+        :param instance: objeto User a actualizar
+        :param validated_data: diccionario con nuevos valores para el User
+        :return: User actualizado
+        """

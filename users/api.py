@@ -12,3 +12,9 @@ class UserListAPI(APIView):
         serializer = UserSerializer(users, many=True)
         serialized_user = serializer.data   # lista de diccionarios
         return Response(serialized_user)
+
+
+class UserDetailAPI(APIView):
+
+    def get(self, request, pk):
+        pass

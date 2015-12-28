@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from users.serializers import UserSerializer
+from django.shortcuts import get_object_or_404
 
 
 class UserListAPI(APIView):
@@ -17,4 +18,4 @@ class UserListAPI(APIView):
 class UserDetailAPI(APIView):
 
     def get(self, request, pk):
-        pass
+        user = get_object_or_404(User, pk=pk)

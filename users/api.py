@@ -19,3 +19,5 @@ class UserDetailAPI(APIView):
 
     def get(self, request, pk):
         user = get_object_or_404(User, pk=pk)
+        serializer = UserSerializer(user)
+        return Response(serializer.data)

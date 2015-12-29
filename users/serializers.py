@@ -42,7 +42,8 @@ class UserSerializer(serializers.Serializer):
         Valida si existe un usuario con ese username
         """
         users = User.objects.filter(username=data)
-        if len(users) != 0:
+        # Si estoy creando (no hay instancia) comprobar si hay usuarios con ese username
+        if not self.instance and len(users) != 0:
             raise serializers.ValidationError("Ya existe un usuario con ese username")
         else:
             return data

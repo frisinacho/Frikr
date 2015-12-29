@@ -45,5 +45,9 @@ class UserSerializer(serializers.Serializer):
         # Si estoy creando (no hay instancia) comprobar si hay usuarios con ese username
         if not self.instance and len(users) != 0:
             raise serializers.ValidationError("Ya existe un usuario con ese username")
+        # Si estoy actualizando, el nuevo username es diferente al de la instancia (está cambiando el username)
+        # y existen usuarios ya registrados con el nuevo username
+        elif self.instance.username != data and len(users) != 0:
+            raise serializers.ValidationError("Ya existe un usuario con ese username")
         else:
             return data

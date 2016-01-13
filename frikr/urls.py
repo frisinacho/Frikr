@@ -24,7 +24,7 @@ from users.views import LoginView, LogoutView
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 
-    # Photo URLs
+    # Photos URLs
     url(r'^$', HomeView.as_view(), name='photos_home'),
     url(r'^my-photos/$', login_required(UserPhotosView.as_view()), name='user_photos'),
     url(r'^photos/$', PhotoListView.as_view(), name='photos_list'),

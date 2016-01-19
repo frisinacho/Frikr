@@ -6,7 +6,9 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 
 class PhotoListAPI(ListCreateAPIView):
     queryset = Photo.objects.all()
-    serializer_class = PhotoListSerializer
+
+    def get_serializer_class(self):
+        return PhotoSerializer if self.request.method == "POST" else PhotoListSerializer
 
 
 class PhotoDetailAPI(RetrieveUpdateDestroyAPIView):

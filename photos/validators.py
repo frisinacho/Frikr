@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 
-def clean(self):
+def badwords_detector(value):
         """
-        Valida si en la descripción se han puesto tacos definidos en settings.BADWORDS
-        :return: diccionario con los atributos si OK
+        Valida si en 'value' se han puesto tacos definidos en settings.BADWORDS
+        :return: Boolean
         """
         cleaned_data = super(PhotoForm, self).clean()
 

@@ -7,6 +7,7 @@ class PhotoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Photo
+        read_only_fields =('owner',)
 
 
 class PhotoListSerializer(PhotoSerializer):

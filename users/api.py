@@ -2,12 +2,15 @@
 from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
+from users.permissions import UserPermission
 from users.serializers import UserSerializer
 from django.shortcuts import get_object_or_404
 from rest_framework import status
 
 
 class UserListAPI(GenericAPIView):
+
+    permission_classes = (UserPermission,)
 
     def get(self, request):
         users = User.objects.all()
@@ -25,6 +28,8 @@ class UserListAPI(GenericAPIView):
 
 
 class UserDetailAPI(GenericAPIView):
+
+    permission_classes = (UserPermission,)
 
     def get(self, request, pk):
         user = get_object_or_404(User, pk=pk)

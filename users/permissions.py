@@ -29,4 +29,4 @@ class UserPermission(BasePermission):
         permiso para realizar la acción (GET, PUT o DELETE)
         sobre el objeto 'obj'
         """
-        pass
+        return request.user.is_superuser or request.user == obj

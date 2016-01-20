@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from rest_framework.permissions import BasePermission
-from users.api import UserDetailAPI
 
 
 class UserPermission(BasePermission):
@@ -10,6 +9,7 @@ class UserPermission(BasePermission):
         Define si el usuario autenticado en request.user tiene
         permiso para realizar la acción (GET, POST, PUT o DELETE)
         """
+        from users.api import UserDetailAPI
         # Si quiere crear un usuario, sea quien sea puede
         if request.method == "POST":
             return True

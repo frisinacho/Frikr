@@ -33,11 +33,13 @@ class UserDetailAPI(GenericAPIView):
 
     def get(self, request, pk):
         user = get_object_or_404(User, pk=pk)
+        self.check_object_permissions(request, user)    # Compruebo si el usuario auth puede hacer GET en este user
         serializer = UserSerializer(user)
         return Response(serializer.data)
 
     def put(self, request, pk):
         user = get_object_or_404(User, pk=pk)
+        self.check_object_permissions(request, user)    # Compruebo si el usuario auth puede hacer PUT en este user
         serializer = UserSerializer(instance=user, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -47,5 +49,6 @@ class UserDetailAPI(GenericAPIView):
 
     def delete(self, request, pk):
         user = get_object_or_404(User, pk=pk)
+        self.check_object_permissions(request, user)    # Compruebo si el usuario auth puede hacer DELETE en este user
         user.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

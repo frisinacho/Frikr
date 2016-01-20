@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from rest_framework.permissions import BasePermission
+from users.api import UserDetailAPI
 
 
 class UserPermission(BasePermission):
@@ -9,7 +10,14 @@ class UserPermission(BasePermission):
         Define si el usuario autenticado en request.user tiene
         permiso para realizar la acción (GET, POST, PUT o DELETE)
         """
-        pass
+        if request.method == "POST":
+            return True
+        elif request.user.is_superuser:
+            return True
+        elif isinstance(view, UserDetailAPI):
+            return True
+        else:
+            return False
 
     def has_object_permission(self, request, view, obj):
         """

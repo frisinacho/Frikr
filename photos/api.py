@@ -16,6 +16,9 @@ class PhotoListAPI(PhotosQuerySet, ListCreateAPIView):
     def get_queryset(self):
         return self.get_photos_queryset(self.request)
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
 
 class PhotoDetailAPI(PhotosQuerySet, RetrieveUpdateDestroyAPIView):
     queryset = Photo.objects.all()

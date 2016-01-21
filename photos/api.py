@@ -4,6 +4,10 @@ from photos.serializers import PhotoSerializer, PhotoListSerializer
 from photos.views import PhotosQuerySet
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.viewsets import ModelViewSet
+
+
+class PhotoViewSet(PhotosQuerySet, ModelViewSet):
 
 
 class PhotoListAPI(PhotosQuerySet, ListCreateAPIView):

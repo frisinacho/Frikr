@@ -8,6 +8,11 @@ from rest_framework.viewsets import ModelViewSet
 
 
 class PhotoViewSet(PhotosQuerySet, ModelViewSet):
+    queryset = Photo.objects.all()
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+    def get_queryset(self):
+        return self.get_photos_queryset(self.request)
 
 
 class PhotoListAPI(PhotosQuerySet, ListCreateAPIView):

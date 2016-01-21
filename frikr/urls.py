@@ -26,7 +26,7 @@ from users.views import LoginView, LogoutView
 
 # APIRouter
 router = DefaultRouter()
-router.register(r'photos', PhotoViewSet)
+router.register(r'api/1.0/photos', PhotoViewSet)
 
 
 urlpatterns = [

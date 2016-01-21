@@ -14,6 +14,9 @@ class PhotoViewSet(PhotosQuerySet, ModelViewSet):
     def get_queryset(self):
         return self.get_photos_queryset(self.request)
 
+    def get_serializer_class(self):
+        return PhotoListSerializer if self.action == 'list' else PhotoSerializer
+
 
 class PhotoListAPI(PhotosQuerySet, ListCreateAPIView):
     queryset = Photo.objects.all()

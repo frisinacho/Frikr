@@ -28,6 +28,7 @@ class PhotoViewSet(PhotosQuerySet, ModelViewSet):
         Asigna automáticamente la autoría de la nueva foto
         al usuario autenticado
         """
+        serializer.save(owner=self.request.user)
 
 
 class PhotoListAPI(PhotosQuerySet, ListCreateAPIView):

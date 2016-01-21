@@ -23,6 +23,12 @@ class PhotoViewSet(PhotosQuerySet, ModelViewSet):
         """
         return PhotoListSerializer if self.action == 'list' else PhotoSerializer
 
+    def perform_create(self, serializer):
+        """
+        Asigna automáticamente la autoría de la nueva foto
+        al usuario autenticado
+        """
+
 
 class PhotoListAPI(PhotosQuerySet, ListCreateAPIView):
     queryset = Photo.objects.all()

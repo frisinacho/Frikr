@@ -19,8 +19,15 @@ from django.contrib.auth.decorators import login_required
 
 from photos.api import PhotoViewSet
 from photos.views import HomeView, DetailView, CreateView, PhotoListView, UserPhotosView
+from rest_framework.routers import DefaultRouter
 from users.api import UserListAPI, UserDetailAPI
 from users.views import LoginView, LogoutView
+
+
+# APIRouter
+router = DefaultRouter()
+router.register(r'photos', PhotoViewSet)
+
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),

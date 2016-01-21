@@ -40,8 +40,7 @@ urlpatterns = [
     url(r'photos/new$', CreateView.as_view(), name='create_photo'),
 
     # Photos API URLs
-    url(r'^api/1.0/photos/$', PhotoListAPI.as_view(), name='photo_list_api'),
-    url(r'^api/1.0/photos/(?P<pk>[0-9]+)$', PhotoDetailAPI.as_view(), name='photo_detail_api'),
+    url(r'', include(router.urls)),   # Incluyo las URLs de API
 
     # User URLs
     url(r'^login$', LoginView.as_view(), name='users_login'),

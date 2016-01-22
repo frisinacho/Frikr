@@ -2,22 +2,18 @@
 from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
-from rest_framework.viewsets import ViewSet
+from rest_framework.viewsets import GenericViewSet
 from users.permissions import UserPermission
 from users.serializers import UserSerializer
 from django.shortcuts import get_object_or_404
 from rest_framework import status
 
 
-class UserViewSet(ViewSet):
-    pass
-
-
-class UserListAPI(GenericAPIView):
+class UserViewSet(GenericViewSet):
 
     permission_classes = (UserPermission,)
 
-    def get(self, request):
+    def list(self, request):
         users = User.objects.all()
         serializer = UserSerializer(users, many=True)
         serialized_user = serializer.data   # lista de diccionarios

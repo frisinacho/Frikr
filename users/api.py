@@ -17,6 +17,7 @@ class UserViewSet(GenericViewSet):
     def list(self, request):
         users = User.objects.all()
         serializer = UserSerializer(users, many=True)
+        self.paginate_queryset(users)  # pagino el resultado
         serialized_user = serializer.data   # lista de diccionarios
         return Response(serialized_user)
 

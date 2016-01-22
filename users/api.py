@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib.auth.models import User
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 from users.permissions import UserPermission
@@ -10,6 +11,7 @@ from rest_framework import status
 
 class UserViewSet(GenericViewSet):
 
+    pagination_class = PageNumberPagination
     permission_classes = (UserPermission,)
 
     def list(self, request):

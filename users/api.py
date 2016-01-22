@@ -2,10 +2,15 @@
 from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
+from rest_framework.viewsets import ViewSet
 from users.permissions import UserPermission
 from users.serializers import UserSerializer
 from django.shortcuts import get_object_or_404
 from rest_framework import status
+
+
+class UserViewSet(ViewSet):
+    pass
 
 
 class UserListAPI(GenericAPIView):

@@ -11,12 +11,13 @@ from rest_framework import status
 
 class UserViewSet(GenericViewSet):
 
+    queryset = User.objects.all()   # Obtengo todos los usuarios
     serializer_class = UserSerializer
     pagination_class = PageNumberPagination
     permission_classes = (UserPermission,)
 
     def list(self, request):
-        users = User.objects.all()
+        users = self.get_queryset()
         serializer = UserSerializer(users, many=True)
         self.paginate_queryset(users)  # pagino el resultado
         return self.get_paginated_response(serializer.data)  # devuelvo una respuesta paginada

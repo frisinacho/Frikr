@@ -5,10 +5,10 @@ from users.api import UserViewSet
 
 # APIRouter
 router = DefaultRouter()
-router.register(r'api/1.0/users', UserViewSet, base_name='user')
+router.register(r'users', UserViewSet, base_name='user')
 
 
 urlpatterns = [
     # API URLs
-    url(r'', include(router.urls)),   # Incluyo las URLs de API
+    url(r'1.0/', include(router.urls)),   # Incluyo las URLs de API
 ]

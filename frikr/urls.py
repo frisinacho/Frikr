@@ -25,4 +25,8 @@ urlpatterns = [
     # Users URLs
     url(r'', include(users_urls)),
     url(r'', include(users_api_urls)),
+
+    # Photos URLs
+    url(r'', include(photos_urls)),
+    url(r'', include(photos_api_urls)),
 ]

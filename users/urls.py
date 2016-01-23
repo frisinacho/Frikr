@@ -1,15 +1,9 @@
-from django.conf.urls import include, url
-
-from rest_framework.routers import DefaultRouter
-from users.api import UserViewSet
-
-
-# APIRouter
-router = DefaultRouter()
-router.register(r'api/1.0/users', UserViewSet, base_name='user')
+from django.conf.urls import url
+from users.views import LoginView, LogoutView
 
 
 urlpatterns = [
-    # API URLs
-    url(r'', include(router.urls)),   # Incluyo las URLs de API
+    # User URLs
+    url(r'^login$', LoginView.as_view(), name='users_login'),
+    url(r'^logout$', LogoutView.as_view(), name='users_logout'),
 ]

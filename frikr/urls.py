@@ -21,4 +21,8 @@ from photos import urls as photos_urls, api_urls as photos_api_urls
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+
+    # Users URLs
+    url(r'', include(users_urls)),
+    url(r'', include(users_api_urls)),
 ]

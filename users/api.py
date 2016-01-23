@@ -11,6 +11,7 @@ from rest_framework import status
 
 class UserViewSet(GenericViewSet):
 
+    serializer_class = UserSerializer
     pagination_class = PageNumberPagination
     permission_classes = (UserPermission,)
 

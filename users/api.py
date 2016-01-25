@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
@@ -26,6 +27,7 @@ class UserViewSet(GenericViewSet):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             new_user = serializer.save()
+            send_mail(u"Bienvenido!", u"Bienvenido a Frikr!", "welcome@frikr.com", [new_user.email], fail_silently=True)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

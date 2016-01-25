@@ -2,6 +2,7 @@
 from photos.models import Photo
 from photos.serializers import PhotoSerializer, PhotoListSerializer
 from photos.views import PhotosQuerySet
+from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.viewsets import ModelViewSet
 
@@ -9,6 +10,9 @@ from rest_framework.viewsets import ModelViewSet
 class PhotoViewSet(PhotosQuerySet, ModelViewSet):
     queryset = Photo.objects.all()
     permission_classes = (IsAuthenticatedOrReadOnly,)
+    filter_backends = (SearchFilter, OrderingFilter)
+    search_fields = ('name', 'description', 'owner__first_name')
+    ordering_fields = ('name', 'owner')
 
     def get_queryset(self):
         return self.get_photos_queryset(self.request)
